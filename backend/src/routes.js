@@ -10,11 +10,12 @@ routes.get('/trees',TreeController.index);
 routes.post('/trees',TreeController.create);
 
 routes.post('/session',SessionController.create);
+routes.get('/session',SessionController.index);
 
 routes.get('/profile',ProfileController.index);
 
 routes.get('/persons',PersonsController.index);
 routes.post('/persons',PersonsController.create);
-routes.delete('/persons/:id_person',PersonsController.delete);
+//routes.delete('/persons/:id_person',PersonsController.delete);
 
 module.exports = routes;

@@ -14,7 +14,6 @@ module.exports = {
     await connection('trees').insert({
       family_name
       })
-    
       return response.json();
   }
 };

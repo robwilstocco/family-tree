@@ -6,9 +6,8 @@ module.exports = {
     return response.json(persons);
   },
   async create(request, response){
-    
-    const {person_name, person_birthdate,id_parents,id_relation} = request.body;
-    const tree_id = request.headers.authorization;
+    const {tree_id,person_name, person_birthdate,id_parents,id_relation} = request.body;
+    //const tree_id = request.headers.authorization;
 
     await connection('persons').insert({
       tree_id,
@@ -20,7 +19,7 @@ module.exports = {
     return response.json();
   },
 
-  async delete(request, response){
+  /*async delete(request, response){
 
     const {id_person} = request.params;
     const tree_id = parseInt(request.headers.authorization);
@@ -39,5 +38,5 @@ module.exports = {
 
       return response.status(204).send();
 
-  }
+  }*/
 };
