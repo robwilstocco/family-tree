@@ -1,0 +1,79 @@
+.login-container{
+  width: 100%;
+  max-width: 1120px;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: #ececec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container section.form{
+  width: 100%;
+  max-width: 350px;
+  margin-right: 30px;
+  padding: 10px;
+}
+
+.login-container section.form div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.login-container section.form div img {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 100px;
+  margin-right: 5px;
+}
+.login-container section.form div h1{
+  color: #de1581;
+  font-size: 40px;
+  font-family: 'Luckiest Guy', cursive;
+  text-shadow: 1px 2px black;
+}
+
+.login-container section.form form h2{
+ font-size: 32px;
+ margin-bottom: 32px;
+}
+
+.new{
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  color: #41414d;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+.new svg{
+  margin-right: 8px;
+}
+
+.list {
+  max-height: 350px;
+  overflow:auto;
+  padding: 20px;
+  border: 1px solid black;
+  background-color: #FFF;
+  min-height: 200px;
+}
+.list li {
+  display: flex;
+  align-items: center;
+  color: #41414d;
+  font-size: 15px;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+
+.list li a {
+  color: #41414d;
+  text-decoration: none;
+}
