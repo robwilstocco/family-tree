@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
-//import {Link} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import logoTree from '../../assets/logo_tree.png';
 import { FiPower } from 'react-icons/fi';
 import './styles.css';
 import api from '../../services/api';
 
 export default function Tree(){
-  
+  const history = useHistory();
   const [persons, setPersons] = useState([]);
   const treeId = localStorage.getItem('treeId');
   const familyName = localStorage.getItem('familyName');
@@ -100,6 +100,11 @@ export default function Tree(){
     }
   };
 
+  function handleLogout(){
+    localStorage.clear();
+    history.push('/')
+  }
+
   useEffect(()=>{
     api.get('profile', {
       headers: {
@@ -120,7 +125,7 @@ export default function Tree(){
           <h1>Family Tree</h1>
         </div>
         <span>Bem vindo família: {familyName}</span>
-        <button type="button">
+        <button type="button" onClick={handleLogout}>
           <FiPower size={18} color = "#de1581"/>
         </button>
       </header>

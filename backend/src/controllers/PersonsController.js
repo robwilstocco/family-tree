@@ -19,7 +19,7 @@ module.exports = {
     return response.json();
   },
 
-  /*async delete(request, response){
+  async delete(request, response){
 
     const {id_person} = request.params;
     const tree_id = parseInt(request.headers.authorization);
@@ -38,5 +38,5 @@ module.exports = {
 
       return response.status(204).send();
 
-  }*/
+  }
 };
