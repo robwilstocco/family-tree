@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, ReactNode} from 'react';
 import {useHistory} from 'react-router-dom';
 import logoTree from '../../assets/logo_tree.png';
 import { FiPower } from 'react-icons/fi';
@@ -6,27 +6,38 @@ import './styles.css';
 import api from '../../services/api';
 
 export default function Tree(){
+
+  interface Person {
+    id_person: number,
+    tree_id: number,
+    person_name: string,
+    person_birthdate: Date,
+    id_parents: number
+    id_relation: number
+  }
+
   const history = useHistory();
-  const [persons, setPersons] = useState([]);
+  const [persons, setPersons] = useState<Person[]>([]);
   const treeId = localStorage.getItem('treeId');
   const familyName = localStorage.getItem('familyName');
   let personName;
   
-  function newPerson(id){
+
+  function newPerson(id : Person){
 
     localStorage.setItem('namePerson',id.person_name);
-    localStorage.setItem('personBirthdate',id.person_birthdate);
-    localStorage.setItem('idRelation',id.id_relation);
+    localStorage.setItem('personBirthdate',id.person_birthdate.toString());
+    localStorage.setItem('idRelation',id.id_relation.toString());
 
     return
   }
 
-  function teste(pessoa){
+  function fill(pessoa : Person) : ReactNode{
     personName = persons[0].person_name;
     
     if(pessoa.person_name === personName && pessoa.id_relation === 1){
 
-      const root = document.getElementById('tree');
+      const root = document.getElementById('tree')!;
       const div_family = document.createElement('div');
       div_family.className = "family"
       root.appendChild(div_family);
@@ -55,7 +66,7 @@ export default function Tree(){
     }
     else if (pessoa.id_parents === null){
 
-      const relation = document.getElementById(`${'relation_'+pessoa.id_relation}`);
+      const relation = document.getElementById(`${'relation_'+pessoa.id_relation}`)!;
       
       const a = document.createElement('a');
       a.setAttribute('href','/newperson')
@@ -70,7 +81,7 @@ export default function Tree(){
       return
     }
     else{
-      const leaf = document.getElementById(`${'sons_'+pessoa.id_parents}`);
+      const leaf = document.getElementById(`${'sons_'+pessoa.id_parents}`)!;
       const div_family = document.createElement('div');
       div_family.className = "family"
       leaf.appendChild(div_family);
@@ -134,7 +145,7 @@ export default function Tree(){
         {persons.map(person => {
           return(
             <div key={person.id_person}>
-              {teste(person)}
+              {fill(person)}
             </div>
           )}
         )

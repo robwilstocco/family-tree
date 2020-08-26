@@ -8,7 +8,17 @@ import api from '../../services/api';
 
 export default function Login(){
 
-  const [trees,setTrees] = useState([]);
+  interface Tree {
+    id: number,
+    family_name: string
+  }
+
+  interface Info {
+    id: Number,
+    family_name: string
+  }
+
+  const [trees,setTrees] = useState<Tree[]>([]);
 
   useEffect(()=>{
     api.get('trees').then(response =>{
@@ -16,11 +26,9 @@ export default function Login(){
     })
   },[]);
   
-  function handleList(info){
-    localStorage.setItem('treeId',info.id);
-    console.log(info.id);
+  function handleList(info : Info){
+    localStorage.setItem('treeId',(info.id).toString());
     localStorage.setItem('familyName',info.family_name);
-    console.log(info.family_name);
     return 
   }
 

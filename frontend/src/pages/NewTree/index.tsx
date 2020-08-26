@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, ChangeEvent} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import api from '../../services/api';
 import {FiArrowLeft} from 'react-icons/fi'
@@ -12,7 +12,7 @@ export default function NewTree(){
 
   const history = useHistory();
   
-  async function handleTrees(e){
+  async function handleTrees(e : ChangeEvent<HTMLFormElement>){
     e.preventDefault();
 
     try{
