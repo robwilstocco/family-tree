@@ -44,7 +44,7 @@
   border-radius: 90px;
   border: 2px solid black;
   margin: 5px;
-  background-color: rgb(117, 204, 245);
+  background-color: rgb(3, 147, 214);
   cursor: pointer;
   
 }
@@ -68,33 +68,88 @@ a {
   cursor: pointer;
 }
 
-
-.tree{
-  min-width: 1180px;
-  width: fit-content;
-  padding:10px;
-  margin: 0 auto;
-  background-color: #FFF;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid black;
-  height: fit-content;
-}
-
-.parents{
-  display: flex;
-  flex-direction: row;
-  border: 1px dashed black;
-  justify-content: center;
-}
-.sons {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+h6:hover {
+  opacity: 80%;
   
 }
 
-h6:hover {
-  background-color: lightgreen;
+/*****NOVA IMPLEMENTACAO**/
+
+.tree-diagram ul {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  /* Reset */
+  list-style-type: none;
+  margin: 0;
+  padding: 1rem 0.5rem 0rem 0.5rem;
+}
+
+.tree-diagram ul ul::before {
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  content: '';
+
+  /* Position */
+  position: absolute;
+  top: 0;
+  right: 50%;
+
+  /* Size */
+  height: 1rem;
+  width: 50%;
+}
+
+.tree-diagram li {
+  padding: 1rem 0.5rem 0rem 0.5rem;
+  position: relative;
+  /* Center the content */
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.tree-diagram li::before {
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  content: '';
+
+  /* Position */
+  position: absolute;
+  top: 0;
+  right: 50%;
+
+  /* Size */
+  height: 1rem;
+  width: 50%;
+}
+
+.tree-diagram li::after {
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  content: '';
+
+  /* Position */
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  /* Size */
+  width: 50%;
+}
+
+.tree-diagram li:first-child::before,
+.tree-diagram li:last-child::after {
+  /* Remove the top of border from the first and last items */
+  border-top: none;
+}
+
+/* Add a root item if you want */
+li.tree-diagram__root::before {
+  border-right: none;
+}
+
+.person{
+  display: flex;
+  border: 1px solid black;
+  padding: 5px;
+  background-color: #fff;
 }
