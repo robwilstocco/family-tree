@@ -4,6 +4,8 @@ import {Link, useHistory} from 'react-router-dom';
 import {FiArrowLeft} from 'react-icons/fi'
 import logoTree from '../../assets/logo_tree.png';
 import api from '../../services/api';
+import formatDate from '../../utils/formatDate';
+import { Relation } from './types';
 
 export default function NewPerson() {
   const [person_name, setPersonName] = useState('');
@@ -13,8 +15,8 @@ export default function NewPerson() {
   const tree_id = localStorage.getItem("treeId");
   const namePerson = localStorage.getItem("namePerson");
   const personBirthdate = localStorage.getItem("personBirthdate");
-  const history = useHistory();
 
+  const history = useHistory();
   async function handlePersons(e : ChangeEvent<HTMLFormElement>){
     e.preventDefault();
     
@@ -35,10 +37,7 @@ export default function NewPerson() {
         history.push('/tree')
       }
       if( relation === "son" ){
-
-        interface Relation {
-          id_relation: number
-        }
+        
         const id_parents = localStorage.getItem("idRelation")
         const last : Relation[] = (await api.get('profile', {
                 headers: {
@@ -82,7 +81,7 @@ export default function NewPerson() {
               <h1>Family Tree</h1>
             </div>
             <h2>Nome: {namePerson}</h2>
-            <p>Data de Nascimento:{personBirthdate}</p>
+            <p>Data de Nascimento: {formatDate(personBirthdate)}</p>
             <Link to="/tree" className="new">
               <FiArrowLeft size={16} color="#de1581"/>
               Voltar

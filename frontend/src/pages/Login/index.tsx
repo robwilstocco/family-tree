@@ -5,18 +5,9 @@ import {GiFamilyTree} from 'react-icons/gi'
 import treeImg from '../../assets/family_tree.jpg';
 import logoTree from '../../assets/logo_tree.png';
 import api from '../../services/api';
+import { Info, Tree } from './types';
 
 export default function Login(){
-
-  interface Tree {
-    id: number,
-    family_name: string
-  }
-
-  interface Info {
-    id: Number,
-    family_name: string
-  }
 
   const [trees,setTrees] = useState<Tree[]>([]);
 
